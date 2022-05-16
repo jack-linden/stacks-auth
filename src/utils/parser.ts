@@ -4,7 +4,7 @@ import { validateStacksAddress } from "@stacks/transactions";
 
 const DOMAIN =
   "(?<domain>([^?#]*)) wants you to sign in with your Stacks account:";
-const ADDRESS = "\\n(?<address>S[A-Z0-9]{40})\\n\\n";
+const ADDRESS = "\\n(?<address>[A-Z0-9]{40})\\n\\n";
 const STATEMENT = "((?<statement>[^\\n]+)\\n)?";
 const URI = "(([^:?#]+):)?(([^?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))?";
 const URI_LINE = `\\nURI: (?<uri>${URI}?)`;
@@ -56,7 +56,7 @@ export class ParsedMessage {
       throw new Error("Invalid address.");
     }
 
-    this.statement = match?.groups?.statement!;
+    this.statement = match?.groups?.statement;
     this.uri = match?.groups?.uri!;
 
     if (!uri.isUri(this.uri)) {
