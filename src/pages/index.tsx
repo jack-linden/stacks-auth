@@ -3,6 +3,7 @@ import type { NextPage } from "next";
 import { useConnect, signMessage, UserData } from "@stacks/connect-react";
 import { getCsrfToken, signIn } from "next-auth/react";
 import { appDetails, userSession } from "./_app";
+import { StacksMessage } from "../utils/stacksMessage";
 
 const Home: NextPage = () => {
   const { doOpenAuth, sign, isAuthenticating, authenticate } = useConnect();
@@ -28,19 +29,24 @@ const Home: NextPage = () => {
   const handleSign = async () => {
     if (!stacksUser) return;
 
-    const nonce = await getCsrfToken();
-    const domain = window.location.host;
-    const address = stacksUser.profile.stxAddress.mainnet;
     const callbackUrl = "/protected";
-    let message = `${domain} wants you to sign in with your Stacks account: ${address}\n`;
-    message += `URI: ${domain}`;
-    message += `Nonce: ${nonce}`;
-    message += `Issued At: ${new Date()}`;
+    const stacksMessage = new StacksMessage({
+      domain: window.location.host,
+      address: stacksUser.profile.stxAddress.mainnet,
+      statement: "Sign in with Stacks to the app.",
+      uri: window.location.origin,
+      version: "1",
+      chainId: 1,
+      nonce: await getCsrfToken(),
+    });
+
+    const message = stacksMessage.prepareMessage();
+
     sign({
       message,
       onFinish: ({ signature }) => {
         signIn("credentials", {
-          message: JSON.stringify(message),
+          message: message,
           redirect: false,
           signature,
           callbackUrl,
