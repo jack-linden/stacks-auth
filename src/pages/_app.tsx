@@ -7,6 +7,8 @@ import {
   UserSession,
 } from "@stacks/connect-react";
 
+import { SessionProvider } from "next-auth/react";
+
 export const appConfig = new AppConfig(["store_write", "publish_data"]);
 export const userSession = new UserSession({ appConfig });
 export const appDetails = {
@@ -23,7 +25,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <Connect authOptions={authOptions}>
-      <Component {...pageProps} />
+      <SessionProvider session={pageProps.session} refetchInterval={0}>
+        <Component {...pageProps} />
+      </SessionProvider>
     </Connect>
   );
 }
