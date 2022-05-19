@@ -1,10 +1,10 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@stacks/connect': 6.6.0
-  '@stacks/connect-react': 15.0.0
-  '@stacks/encryption': 4.0.1
-  '@stacks/transactions': 4.0.1
+  '@stacks/connect': 6.7.0
+  '@stacks/connect-react': 16.0.0
+  '@stacks/encryption': 4.1.0
+  '@stacks/transactions': 4.1.0
   '@types/node': 17.0.33
   '@types/react': 18.0.9
   '@types/react-dom': 18.0.4
@@ -19,10 +19,10 @@ specifiers:
   valid-url: 1.0.9
 
 dependencies:
-  '@stacks/connect': 6.6.0
-  '@stacks/connect-react': 15.0.0_react-dom@18.1.0+react@18.1.0
-  '@stacks/encryption': 4.0.1
-  '@stacks/transactions': 4.0.1
+  '@stacks/connect': 6.7.0
+  '@stacks/connect-react': 16.0.0_react-dom@18.1.0+react@18.1.0
+  '@stacks/encryption': 4.1.0
+  '@stacks/transactions': 4.1.0
   next: 12.1.6_react-dom@18.1.0+react@18.1.0
   next-auth: 4.3.4_react-dom@18.1.0+react@18.1.0
   react: 18.1.0
@@ -256,8 +256,8 @@ packages:
     resolution: {integrity: sha512-vGl7ozNbm2aktcGwSbFrr6aXrRLoJLAVvf5wX59p/EyotwvrzbblHSzyXFEoY61Nw8FW/cdwDA2ThY9nvBxsnA==}
     dependencies:
       '@stacks/common': 4.0.1
-      '@stacks/encryption': 4.0.1
-      '@stacks/network': 4.0.0
+      '@stacks/encryption': 4.1.0
+      '@stacks/network': 4.0.1
       '@stacks/profile': 4.0.1
       cross-fetch: 3.1.5
       jsontokens: 3.0.0
@@ -277,14 +277,22 @@ packages:
       - encoding
     dev: false
 
-  /@stacks/connect-react/15.0.0_react-dom@18.1.0+react@18.1.0:
-    resolution: {integrity: sha512-5v5KPaQfN11s/eu+N69vMuvTecZaRis4Cn6tIVMv+kKUgqBhT8Jpe/N8aagFzmE9AZTEnKK1NFqqmXdAOB9a0w==}
+  /@stacks/common/4.1.0:
+    resolution: {integrity: sha512-bMgp+AsDfSyPyGuqJxYq7gckaPPI5YY3DJpNS458vEMg0StILh8wdDpL1ASsCxe8RAiuFn+cJdhOClCneppZ1A==}
+    dependencies:
+      '@types/bn.js': 5.1.0
+      '@types/node': 14.18.18
+      buffer: 6.0.3
+    dev: false
+
+  /@stacks/connect-react/16.0.0_react-dom@18.1.0+react@18.1.0:
+    resolution: {integrity: sha512-LMrR7SJfAIub7y+eJPWI/TBvhH+b/qxuU1Tm6oFsBg1Riiv66B60/q2BHs1nF0U6kTlHB0RjC83wfZCtE3v+8A==}
     peerDependencies:
       react: ^16.x || 17.x
       react-dom: ^16.x || 17.x
     dependencies:
       '@stacks/auth': 4.0.0
-      '@stacks/connect': 6.6.0
+      '@stacks/connect': 6.7.0
       jsontokens: 3.0.0
       react: 18.1.0
       react-dom: 18.1.0_react@18.1.0
@@ -298,8 +306,8 @@ packages:
       '@stencil/core': 2.15.0
     dev: false
 
-  /@stacks/connect/6.6.0:
-    resolution: {integrity: sha512-PIRxbfcUm8eQT0vMliODpKNsAHyRWGh2Nk4tyydRkwg07ae6a+KNj/kyooCpaZp71atKoI0W87o1iv6UyngzuA==}
+  /@stacks/connect/6.7.0:
+    resolution: {integrity: sha512-a8FwS21fuWuAbSfMu9cTbOQgNr4otHDacN/1e3/79vahtdcrJ7tszsHKMNJRLP4fVF4o/1zChHre2NBkQJ/FzQ==}
     dependencies:
       '@stacks/auth': 4.0.0
       '@stacks/connect-ui': 5.5.0
@@ -315,22 +323,18 @@ packages:
       - encoding
     dev: false
 
-  /@stacks/encryption/4.0.1:
-    resolution: {integrity: sha512-R4oS34UQMvX+E4NhTxfhfDFafxg11QnQlGO+eL9+Kif5IHEIxXcSkUKVyMjyjP3QCcVouD7MnfHKvm5KQPaL6A==}
+  /@stacks/encryption/4.1.0:
+    resolution: {integrity: sha512-3zbLk1AKShn/+mkSrMS8UXtyd4rXdtr7tjPfJLSF2Q+IfZiPNqP5oQdbXAOp0t8uehno/pOKnttmNIgLZTnwVg==}
     dependencies:
       '@noble/hashes': 1.0.0
       '@noble/secp256k1': 1.5.5
       '@scure/bip39': 1.0.0
-      '@stacks/common': 4.0.1
-      '@types/bn.js': 4.11.6
+      '@stacks/common': 4.1.0
       '@types/node': 14.18.18
-      bn.js: 5.2.0
       bs58: 5.0.0
       ripemd160-min: 0.0.6
       sha.js: 2.4.11
       varuint-bitcoin: 1.1.2
-    transitivePeerDependencies:
-      - encoding
     dev: false
 
   /@stacks/network/4.0.0:
@@ -344,7 +348,14 @@ packages:
   /@stacks/network/4.0.1:
     resolution: {integrity: sha512-CHGcDKQhPM+OWXPXggYOF+V/6e3CbhVc3gjQcXsFd+jdC+MuZwen25RE7MUdOlHXMt8MK1HSz5WwQeTYUjJIKg==}
     dependencies:
-      '@stacks/common': 4.0.1
+      '@stacks/common': 4.1.0
+    dev: false
+
+  /@stacks/network/4.1.0:
+    resolution: {integrity: sha512-vZoqBkMPUtPqdkW0oluzSQrJFFz2CThpTP2wgJLm3Aps+9TFJ3IXbZiN+8uKVpnd4ebDl9jaLwYZKOtF5ulg1Q==}
+    dependencies:
+      '@stacks/common': 4.1.0
+      cross-fetch: 3.1.5
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -358,9 +369,9 @@ packages:
   /@stacks/profile/4.0.1:
     resolution: {integrity: sha512-kxSPS76IRTe0RiVxa5Su84oe6xQe26mQ3qCBNxNe3sArtCuROrgfDUucHyNCPlCL2R3e7N8ndhhry8tEp/DUtA==}
     dependencies:
-      '@stacks/common': 4.0.1
-      '@stacks/network': 4.0.1
-      '@stacks/transactions': 4.0.1
+      '@stacks/common': 4.1.0
+      '@stacks/network': 4.1.0
+      '@stacks/transactions': 4.1.0
       jsontokens: 3.0.0
       schema-inspector: 2.0.1
       zone-file: 2.0.0-beta.3
@@ -374,7 +385,7 @@ packages:
       '@noble/hashes': 1.0.0
       '@noble/secp256k1': 1.5.5
       '@stacks/common': 4.0.1
-      '@stacks/network': 4.0.0
+      '@stacks/network': 4.0.1
       '@types/bn.js': 4.11.6
       '@types/node': 14.18.18
       '@types/sha.js': 2.4.0
@@ -389,19 +400,16 @@ packages:
       - encoding
     dev: false
 
-  /@stacks/transactions/4.0.1:
-    resolution: {integrity: sha512-4Qr53vul33OBlOCEJpwdqCnTEkQqh+KvLB0QBSK5/G+wDatiHF0FTHk6Z8MoUBM7YZuV804beXUlNJ3CSruVKw==}
+  /@stacks/transactions/4.1.0:
+    resolution: {integrity: sha512-NS3DkZh8WziUQaze6RY5ft1v5bmq1wHjYEoCMzzhdreJ+Sp74ZADaO38fQQGcEcVdOhcM31k2oh6DgJEmBXVUQ==}
     dependencies:
       '@noble/hashes': 1.0.0
       '@noble/secp256k1': 1.5.5
-      '@stacks/common': 4.0.1
-      '@stacks/network': 4.0.1
-      '@types/bn.js': 4.11.6
+      '@stacks/common': 4.1.0
+      '@stacks/network': 4.1.0
       '@types/node': 14.18.18
       '@types/sha.js': 2.4.0
-      bn.js: 5.2.0
       c32check: 1.1.3
-      cross-fetch: 3.1.5
       lodash.clonedeep: 4.5.0
       ripemd160-min: 0.0.6
       sha.js: 2.4.11

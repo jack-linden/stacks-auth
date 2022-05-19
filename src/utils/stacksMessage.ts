@@ -15,7 +15,7 @@ import {
   VerifyParams,
   VerifyParamsKeys,
 } from "./types";
-import { hashMessage } from "@stacks/encryption";
+import { hashMessage, verifyMessageSignature } from "@stacks/encryption";
 
 export class StacksMessage {
   /**RFC 4501 dns authority that is requesting the signing. */
@@ -256,12 +256,21 @@ export class StacksMessage {
       /** Recover address from signature */
       let addr;
       try {
+        // TODO verify the signature
         const publicKey = publicKeyFromSignature(
           // @ts-ignore
           hashMessage(EIP4361Message).toString("hex"),
           createMessageSignature(signature)
         );
-        addr = getAddressFromPublicKey(publicKey);
+        const isValid = verifyMessageSignature({
+          signature,
+          // @ts-ignore
+          message: EIP4361Message,
+          publicKey,
+        });
+        if (isValid) {
+          addr = getAddressFromPublicKey(publicKey);
+        }
       } catch (_) {
       } finally {
         /** Match signature with message's address */
