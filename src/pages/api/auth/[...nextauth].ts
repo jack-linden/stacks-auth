@@ -2,16 +2,8 @@ import { NextApiHandler } from "next";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { getCsrfToken } from "next-auth/react";
-import { hashMessage } from "@stacks/encryption";
-import {
-  createMessageSignature,
-  getAddressFromPublicKey,
-  publicKeyFromSignature,
-} from "@stacks/transactions";
 import { StacksMessage } from "../../../utils/stacksMessage";
 
-// For more information on each option (and a full list of options) go to
-// https://next-auth.js.org/configuration/options
 const auth: NextApiHandler = async (req, res) => {
   const providers = [
     CredentialsProvider({
@@ -41,7 +33,7 @@ const auth: NextApiHandler = async (req, res) => {
           }
 
           await siwe.verify({ signature: credentials?.signature || "" });
-          console.log(siwe.address);
+        
           return {
             id: siwe.address,
           };
@@ -56,13 +48,11 @@ const auth: NextApiHandler = async (req, res) => {
   const isDefaultSigninPage =
     req.method === "GET" && req.query.nextauth.includes("signin");
 
-  // Hide Sign-In with Ethereum from default sign page
   if (isDefaultSigninPage) {
     providers.pop();
   }
 
   return await NextAuth(req, res, {
-    // https://next-auth.js.org/configuration/providers/oauth
     providers,
     session: {
       strategy: "jwt",

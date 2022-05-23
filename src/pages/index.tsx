@@ -4,11 +4,12 @@ import { useConnect, signMessage, UserData } from "@stacks/connect-react";
 import { getCsrfToken, signIn } from "next-auth/react";
 import { appDetails, userSession } from "./_app";
 import { StacksMessage } from "../utils/stacksMessage";
+import { useRouter } from "next/router";
 
 const Home: NextPage = () => {
   const { doOpenAuth, sign, isAuthenticating, authenticate } = useConnect();
   const [stacksUser, setStacksUser] = useState<UserData | null>(null);
-
+  const router = useRouter();
   useEffect(() => {
     if (userSession.isSignInPending()) {
       userSession.handlePendingSignIn().then((userData) => {
@@ -51,6 +52,8 @@ const Home: NextPage = () => {
           signature,
           callbackUrl,
         });
+        
+        router.push('/collections')
       },
     });
   };

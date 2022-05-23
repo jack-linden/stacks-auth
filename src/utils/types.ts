@@ -95,3 +95,8 @@ export enum SiweErrorType {
   /** Thrown when some required field is missing. */
   UNABLE_TO_PARSE = "Unable to parse the message.",
 }
+
+export const NO_SESSION = {
+  error: "Unauthorized",
+  message: "You must be logged in to access this resource",
+};

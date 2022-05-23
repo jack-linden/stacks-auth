@@ -1,4 +1,5 @@
-// This is an example of how to read a JSON Web Token from an API route
+/* eslint-disable import/no-anonymous-default-export */
+
 import { getToken } from "next-auth/jwt";
 import type { NextApiRequest, NextApiResponse } from "next";
 

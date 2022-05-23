@@ -4,7 +4,7 @@ import { validateStacksAddress } from "@stacks/transactions";
 
 const DOMAIN =
   "(?<domain>([^?#]*)) wants you to sign in with your Stacks account:";
-const ADDRESS = "\\n(?<address>[A-Z0-9]{40})\\n\\n";
+const ADDRESS = "\\n(?<address>[A-Z0-9]{41})\\n\\n";
 const STATEMENT = "((?<statement>[^\\n]+)\\n)?";
 const URI = "(([^:?#]+):)?(([^?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))?";
 const URI_LINE = `\\nURI: (?<uri>${URI}?)`;
@@ -19,7 +19,7 @@ const REQUEST_ID =
   "(\\nRequest ID: (?<requestId>[-._~!$&'()*+,;=:@%a-zA-Z0-9]*))?";
 const RESOURCES = `(\\nResources:(?<resources>(\\n- ${URI}?)+))?`;
 
-const MESSAGE = `^${DOMAIN}${ADDRESS}${STATEMENT}${URI_LINE}${VERSION}${CHAIN_ID}${NONCE}${ISSUED_AT}${EXPIRATION_TIME}${NOT_BEFORE}${REQUEST_ID}${RESOURCES}$`;
+const MESSAGE = `^${DOMAIN}${ADDRESS}${STATEMENT}${URI_LINE}${VERSION}${CHAIN_ID}${NONCE}${ISSUED_AT}$`;
 
 export class ParsedMessage {
   domain: string;
